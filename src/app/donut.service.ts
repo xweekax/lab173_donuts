@@ -1,7 +1,7 @@
 import { analyzeNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import {Donut, Donuts} from './donuts-interface'
+import {Donut, DonutDetails, Donuts} from './donuts-interface'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,6 @@ export class DonutService {
   }
 
   getDonut(url:Donut){
-    return this.http.get<Donut>(url.ref);
+    return this.http.get<DonutDetails>(url.ref);
   }
 }

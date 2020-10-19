@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DonutService } from '../donut.service';
+import {Donut} from '../donuts-interface';
+import {DonutDetails} from '../donuts-interface';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-donut-detail',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonutDetailComponent implements OnInit {
 
-  constructor() { }
+  donut: Donut;
+  donutDetails: DonutDetails;
+
+  constructor(private route: ActivatedRoute, private dService: DonutService) { }
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe((data: Donut) => this.donut = data);
+
+    this.dService.getDonut(this.donut).subscribe((data: DonutDetails) => this.donutDetails = data);
+    
   }
 
 }

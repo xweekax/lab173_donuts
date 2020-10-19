@@ -1,8 +1,8 @@
 <h2>Here are some Donuts!</h2>
 <div *ngFor="let d of donuts?.results">
         
-    <a href="{{d.ref}}">{{d.name}}</a>
+    <a routerLink="/DonutDetail" [queryParams]="d">{{d.name}}</a>
     
-    
+   <!-- <app-donut-detail></app-donut-detail> -->
 
 </div>
